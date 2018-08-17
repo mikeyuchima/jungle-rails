@@ -1,0 +1,12 @@
+Welcome to the Jungle!
+
+    You have successfully completed an order,
+<% @order.line_items.each do |line_item| %>
+      <% if product = Product.find_by(id: line_item.product_id) %>
+           Item: <%= product.name %>
+           Quantity: <%= line_item.quantity %>
+           Total: <%= product.price * line_item.quantity %>
+      <% end %>
+    <% end %>
+
+Thanks for coming to the Jungle, have a great day!

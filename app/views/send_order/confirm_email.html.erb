@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to the Jungle! </h1>
+    <p>
+      You have successfully completed an order,
+    <br>
+    </p>
+<% @order.line_items.each do |line_item| %>
+      <% if product = Product.find_by(id: line_item.product_id) %>
+        <div>
+           <p>Item:<%= product.name %></p>
+           <p>Quantity:<%= line_item.quantity %></p>
+           <p>Total:<%= product.price * line_item.quantity %></p>
+        </div>
+      <% end %>
+    <% end %>
+    <p>Thanks for coming to the Jungle, have a great day!</p>
+  </body>
+</html>
