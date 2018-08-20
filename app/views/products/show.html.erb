@@ -24,8 +24,36 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
-    </div>
 
   </article>
+
+    <h3>Post Reviews</h3>
+    <div class="form-group">
+      <%= form_for [@product, @rating] do |f| %>
+        <%= f.label :description %>:
+        <%= f.text_field :description %>
+
+        <%= f.label :rate %>:
+        <%= f.select(:rate, options_for_select([['1',1], ['2',2], ['3',3], ['4',4], ['5',5]])) %>
+
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+
+    <h3>Reviews</h3>
+    <% @product.ratings.reverse.each do |review| %>
+    <div class="col-sm-6">
+      <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd><%= User.find(review.user_id).name %></dd>
+        <dt>Description</dt>
+        <dd><%= review.description %></dd>
+        <dt>Rating</dt>
+        <dd><%= review.rate %></dd>
+      </dl>
+    </div>
+  </div>
+  <% end %>
 
 </section>
