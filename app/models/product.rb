@@ -12,10 +12,6 @@ class Product < ActiveRecord::Base
   validates :quantity, presence: true
   validates :category, presence: true
 
-  def description
-    return "#{name} #{description} #{price_cents} #{quantity}." 
-  end
-
 end
 
 

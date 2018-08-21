@@ -19,7 +19,7 @@ RSpec.describe Product, type: :model do
               quantity: 1,
               price: 9.99
             })
-            @product.save
+            expect(@product.save).to be false   
             expect(@product.errors.full_messages).to eq(["Category can't be blank"])
         end
 
@@ -30,7 +30,7 @@ RSpec.describe Product, type: :model do
               quantity: 1,
               price: 9.99
             })
-            @product.save
+            expect(@product.save).to be false   
             expect(@product.errors.full_messages).to eq(["Name can't be blank"])
         end
 
@@ -41,7 +41,7 @@ RSpec.describe Product, type: :model do
                 quantity: nil,
                 price: 9.99
             })
-            @product.save
+            expect(@product.save).to be false   
             expect(@product.errors.full_messages).to eq(["Quantity can't be blank"])
         end
         
@@ -52,7 +52,7 @@ RSpec.describe Product, type: :model do
                 quantity: 1,
                 price: nil
             })
-            @product.save
+            expect(@product.save).to be false   
             expect(@product.errors.full_messages).to eq(["Price cents is not a number", "Price is not a number", "Price can't be blank"])
         end
     end
